@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>InternScout — Student Opportunity Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+<div class="layout">
+<aside class="sidebar">
+  <a class="logo" href="#"><span class="logo-icon">✳</span> intern<span>scout</span></a>
+  <div class="nav-caption">YOUR WORKSPACE</div>
+  <a class="nav-link active" href="#home"><span>▦</span> Dashboard</a>
+  <a class="nav-link" href="#profile"><span>◎</span> Student profile</a>
+  <a class="nav-link" href="#opportunities"><span>⌕</span> Find internships</a>
+  <a class="nav-link" href="#shortlist"><span>♡</span> My shortlist <i id="savedCount">0</i></a>
+  <div class="side-promo"><div class="promo-star">✦</div><b>Your next chapter<br>starts here.</b><p>Discover roles that match your skills, not just your search terms.</p><a href="#profile">Build my profile ↗</a><div class="promo-orbit"></div></div>
+  <div class="side-user"><div class="user-avatar">S</div><div><b>Student Explorer</b><small>Early career talent</small></div><span>•••</span></div>
+</aside>
+<main class="main" id="home">
+<header class="topbar"><div><span class="crumb-muted">Workspace</span><span class="crumb-sep">/</span> Dashboard</div><div class="top-right"><div class="api-status"><i id="statusDot"></i><span id="statusText">Checking TinyFish</span></div><div class="top-avatar">S</div></div></header>
+<section class="hero">
+  <div class="hero-content"><div class="hero-kicker"><span class="spark">✦</span> THE STUDENT OPPORTUNITY ENGINE</div>
+  <h1>Find the work<br>that <em>finds you.</em></h1>
+  <p>One profile. A world of opportunities. Let AI search the live web, uncover internships and surface the ones that fit your skills.</p>
+  <a class="hero-cta" href="#profile">Discover my opportunities <b>↗</b></a>
+  <div class="hero-proof"><span>✳</span> Powered by TinyFish live web intelligence <span class="proof-dot">•</span> Built for students</div></div>
+  <div class="hero-graphic"><div class="graphic-ring ring-a"></div><div class="graphic-ring ring-b"></div><div class="graphic-card card-back"><span>NEW ROLE FOUND</span><b>Creative minds<br>wanted ✦</b></div><div class="graphic-card card-front"><div class="card-top"><span class="card-brand">✳</span><span class="card-chip">MATCH FOUND</span></div><div class="card-title">Your next<br><em>opportunity.</em></div><div class="match-meter"><span></span></div><small>SKILL MATCH</small><strong>94%</strong></div><div class="floating-star star-a">✦</div><div class="floating-star star-b">✳</div><div class="graphic-orbit"></div></div>
+</section>
+<section class="metric-row">
+ <div class="metric"><div class="metric-icon lilac">⌕</div><div><small>DISCOVERY ENGINE</small><b>Live web search</b><span>TinyFish Search API</span></div></div>
+ <div class="metric"><div class="metric-icon mint">✧</div><div><small>SMART MATCHING</small><b>Skill relevance</b><span>Explainable scoring</span></div></div>
+ <div class="metric"><div class="metric-icon peach">↗</div><div><small>DEEP RESEARCH</small><b>Page intelligence</b><span>TinyFish Fetch + Agent</span></div></div>
+</section>
+<section class="section-title" id="profile"><div><div class="eyebrow">LET'S GET TO KNOW YOU</div><h2>Build your opportunity profile</h2><p>Tell us what you're learning and where you want to grow.</p></div><div class="step">STEP <b>01</b><span>/ 02</span></div></section>
+<section class="profile-card">
+ <form id="profileForm">
+  <div class="profile-grid">
+   <label class="input-field"><span>Your name <small>OPTIONAL</small></span><input id="name" placeholder="e.g. Aayush"></label>
+   <label class="input-field"><span>What role are you looking for?</span><input id="role" value="Python developer" placeholder="e.g. Data analyst, UI designer"></label>
+   <label class="input-field"><span>Your skills <small>COMMA SEPARATED</small></span><input id="skills" value="Python, Flask, SQL, HTML, CSS" placeholder="Python, React, Figma, Excel..."></label>
+   <label class="input-field"><span>Preferred location</span><input id="location" value="India" placeholder="India, Delhi, Remote..."></label>
+   <label class="input-field"><span>Education level</span><select id="level"><option>First-year student</option><option selected>Second-year student</option><option>Third-year student</option><option>Final-year student</option><option>Recent graduate</option></select></label>
+   <label class="input-field"><span>Work preference</span><select id="workMode"><option>Any</option><option>Remote</option><option>On-site</option><option>Hybrid</option></select></label>
+  </div>
+  <div class="profile-footer"><div><span class="privacy">◈</span> Your profile stays in this browser. Never share passwords or sensitive documents.</div><button class="search-btn" id="searchBtn" type="submit">Find my internships <b>→</b></button></div>
+ </form>
+</section>
+<section class="opportunities" id="opportunities">
+ <div class="section-title results-title"><div><div class="eyebrow">OPPORTUNITIES, UNLOCKED</div><h2>Discover your next move</h2><p>Live listings from across the web, ranked by relevance to your profile.</p></div><button class="export-btn" id="exportBtn" disabled>↓ Export shortlist</button></div>
+ <div class="results-toolbar"><div class="tabs"><button class="tab active" data-filter="all">All matches <span id="allCount">0</span></button><button class="tab" data-filter="saved">Saved <span id="savedTabCount">0</span></button></div><div class="sort-wrap"><span>Sort by</span><select id="sortSelect"><option value="match">Best match</option><option value="title">Role title</option></select></div></div>
+ <div id="resultsState" class="empty-state"><div class="empty-illustration"><span>✳</span><i>⌕</i></div><h3>Your next opportunity is out there.</h3><p>Complete your profile and hit <b>Find my internships</b> to search live opportunities using TinyFish.</p></div>
+ <div id="resultsList" class="results-list"></div>
+</section>
+<section class="shortlist-section" id="shortlist"><div class="shortlist-banner"><div><div class="eyebrow">KEEP YOUR FAVOURITES CLOSE</div><h2>Your shortlist, your next steps.</h2><p>Save interesting roles and compare them before you apply.</p></div><div class="shortlist-symbol">♡</div></div></section>
+<footer>© 2026 InternScout <span>Built to turn student potential into opportunity <b>✳</b></span></footer>
+</main></div>
+<div class="toast" id="toast"></div>
+<div class="modal-backdrop hidden" id="detailModal"><div class="modal"><button class="modal-close" id="closeModal">×</button><div class="eyebrow">TINYFISH PAGE INTELLIGENCE</div><h2 id="modalTitle">Opportunity details</h2><p id="modalSubtitle">Extract structured details from the source page.</p><div class="modal-actions"><button class="modal-btn secondary" id="fetchBtn">Fetch page content</button><button class="modal-btn primary" id="agentBtn">Run AI web agent ✦</button></div><div class="agent-progress hidden" id="agentProgress">TinyFish agent is navigating the source page…</div><pre id="detailOutput" class="detail-output">Choose Fetch or AI Web Agent to inspect the original listing. Results may take up to a few minutes.</pre></div></div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body></html>
